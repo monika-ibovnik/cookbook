@@ -1,0 +1,19 @@
+{
+  "name": "cookbook",
+  "version": "1.0.0",
+  "description": "a cooking book that generates shopping list",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monika-ibovnik/cookbook.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/monika-ibovnik/cookbook/issues"
+  },
+  "homepage": "https://github.com/monika-ibovnik/cookbook#readme"
+}
