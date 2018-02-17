@@ -21,17 +21,23 @@ export default class ImgPreview extends React.Component{
                     newimg.width = Math.floor((newimg.height*img.width)/img.height);
                     newimg.x = (newimg.height-newimg.width)/2;
                     newimg.y = 0;
-                    return newimg;
-                }else{
+                }else if(horizontalOrVertical < 0){
                     //image is vertical
-                    console.log('vertical');
+                    newimg.width = canvas.width;
+                    newimg.height = Math.floor((newimg.width*img.height)/img.width);
+                    newimg.x = 0;
+                    newimg.y = (newimg.width-newimg.height)/2;
+                }else{
+                    //image is a square
+                    newimg.width = canvas.width;
+                    newimg.height = canvas.height;
+                    newimg.x = 0;
+                    newimg.y = 0;
                 }
+                return newimg;
             };
-            console.log(img.height, img.width);
-            let newsize=checkImage(img);
-            console.log(newsize, 'newsize');
-            console.log(canvas.width);
-            ctx.drawImage(img, 0, 0, img.width, img.height,newsize.x, 0, newsize.width, canvas.height);
+            let resized = checkImage(img);;
+            ctx.drawImage(img, 0, 0, img.width, img.height, resized.x, resized.y , resized.width, resized.height);
         }
         img.src=this.props.src;
     }
