@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import './Layout.css';
 
 function Logo(props){
     if(location.pathname==='/welcome' || location.pathname==='/login'){

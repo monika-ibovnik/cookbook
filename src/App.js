@@ -1,9 +1,14 @@
 import React from 'react';
-import {BrowserRouter} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
 import Layout from './Layout';
 import {getUserInfo} from './actions/userActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+
+import Dashboard from './Dashboard';
+import Cookbook from './Cookbook';
+import Products from './Products';
+import Settings from './Settings';
 
 class App extends React.Component{
     constructor(props){
@@ -16,7 +21,10 @@ class App extends React.Component{
         return(
             <BrowserRouter>
                 <Layout firstname={this.props.firstname}>
-                <h1>Dashboard</h1>
+                    <Route exact path='/' component={Dashboard}/>
+                    <Route path='/cookbook' component={Cookbook}/>
+                    <Route path='/products' component={Products}/>
+                    <Route path='/settings' component={Settings}/>
                 </Layout>
             </BrowserRouter>
         );

@@ -1,0 +1,25 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+}
+a h1{
+    font-family: 'Berkshire Swash', cursive;
+    font-size: 40px;
+    text-align: center;
+    color: #2A252C;
+}
+nav{
+    text-align: center;
+    background-color: #D0C9B9;
+}
+nav a{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+    margin-left: 20px;
+}
