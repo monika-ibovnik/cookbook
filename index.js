@@ -35,17 +35,21 @@ app.use(function(req, res, next){
     next();
 });
 
-// function redirectIfNotLoggedIn(req,res,next){
-//     if(!req.session.user && req.url!='/welcome'){
-//         res.redirect('/welcome');
-//     }else if(req.session.user && req.url === '/welcome'){
-//         res.redirect('/');
-//     }else{
-//         next();
-//     }
-// }
+function redirectIfNotLoggedIn(req,res,next){
+    if(!req.session.user && req.url!='/welcome'){
+        res.redirect('/welcome');
+    }else if(req.session.user && req.url === '/welcome'){
+        res.redirect('/');
+    }else{
+        next();
+    }
+}
 
-app.get('*',  function(req, res) {
+const authRouter = require('./routes/authorisation.js');
+
+app.use(authRouter);
+
+app.get('*', redirectIfNotLoggedIn, function(req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 

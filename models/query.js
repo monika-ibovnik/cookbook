@@ -2,17 +2,17 @@ const spicedPg = require('spiced-pg');
 var dbUrl = process.env.DATABASE_URL || `postgres://${require('../config/database.json').user}:${require('../config/database.json').pass}@localhost:5432/cookbook`;
 
 var db = spicedPg(dbUrl);
-//
-// exports.dbRegisterUser = function(supername, email, hashedPassword){
-//     return db.query(`INSERT INTO heroes (supername, email, password) VALUES ($1, $2, $3) RETURNING id`, [supername, email, hashedPassword]).then(data=>{
-//         return data.rows;
-//     });
-// };
-// exports.dbGetUserByEmail = function(email){
-//     return db.query(`SELECT * FROM heroes WHERE email = $1`, [email]).then(data=>{
-//         return data.rows;
-//     });
-// };
+
+exports.dbRegisterUser = function(firstname, lastname, email, hashedPassword){
+    return db.query(`INSERT INTO users (firstname, lastname, email, password) VALUES ($1, $2, $3, $4) RETURNING id`, [firstname, lastname, email, hashedPassword]).then(data=>{
+        return data.rows;
+    });
+};
+exports.dbGetUserByEmail = function(email){
+    return db.query(`SELECT * FROM users WHERE email = $1`, [email]).then(data=>{
+        return data.rows;
+    });
+};
 //
 // exports.dbUploadProfilePic = function(filename, userid){
 //     return db.query(`INSERT INTO pictures (filename, userid) VALUES ($1, $2) RETURNING filename`, [filename, userid]).then(data=>{
@@ -51,17 +51,17 @@ var db = spicedPg(dbUrl);
 // };
 //
 // exports.dbGetUsers = function({searchString}){
-//     return db.query(`SELECT * FROM heroes WHERE supername ~* $1`, [searchString]).then(data=>{
+//     return db.query(`SELECT * FROM users WHERE supername ~* $1`, [searchString]).then(data=>{
 //         return data.rows;
 //     });
 // };
 //
 // exports.dbGetOtherProfileInfo = function(userid){
-//     return db.query(`SELECT heroes.id, supername, bio, superpower, filename
-//                             FROM heroes
-//                             FULL JOIN profile ON heroes.id = profile.userid
-//                             FULL JOIN pictures ON heroes.id = pictures.userid
-//                             WHERE heroes.id=$1`, [userid])
+//     return db.query(`SELECT users.id, supername, bio, superpower, filename
+//                             FROM users
+//                             FULL JOIN profile ON users.id = profile.userid
+//                             FULL JOIN pictures ON users.id = pictures.userid
+//                             WHERE users.id=$1`, [userid])
 //         .then(data=>{
 //             return data.rows;
 //         }).catch(err=>{
