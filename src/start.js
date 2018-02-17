@@ -7,13 +7,21 @@ import {createStore, applyMiddleware} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import WelcomePage from './WelcomePage';
 import App from './App';
-//import store from './store.js'
+import store from './store.js'
 
 let elementToRender;
 if(location.pathname === '/welcome'){
-    elementToRender = <WelcomePage/>
+    elementToRender = (
+        <Provider store={store}>
+            <WelcomePage/>
+        </Provider>
+    );
 }else{
-    elementToRender = <App />
+    elementToRender = (
+        <Provider store={store}>
+            <App/>
+        </Provider>
+    );
 }
 
 ReactDOM.render(

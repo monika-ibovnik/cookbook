@@ -39,7 +39,8 @@ router.post('/login', (req,res)=>{
             Password.checkPassword(password, databasePassword).then(matches=>{
                 if(matches){
                     req.session.user={
-                        supername: results[0].supername,
+                        firstname: results[0].firstname,
+                        lastname: results[0].lastname,
                         email: results[0].email,
                         id: results[0].id
                     };
@@ -58,17 +59,11 @@ router.get('/logout', (req,res)=>{
     res.redirect('/welcome');
 });
 
-router.get('/currentuser', (req,res)=>{
-    Query.dbGetProfilePic(req.session.user.id).then(result=>{
-        res.json({
-            supername : req.session.user.supername,
-            email : req.session.user.email,
-            id : req.session.user.id,
-            imgUrl : result,
-            showPicUploader: false
-        });
-    }).catch(err=>{
-        console.log('could not get the user picture', err);
+router.get('/user', (req,res)=>{
+    res.json({
+        firstname : req.session.user.firstname,
+        lastname: req.session.user.lastname,
+        id : req.session.user.id,
     });
 });
 
