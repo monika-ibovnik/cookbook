@@ -19,3 +19,9 @@ exports.dbInsertProduct = function(productName, important, userid){
         return data.rows;
     });
 };
+
+exports.dbUpdateProductPic = function(url, productId){
+    return db.query(`UPDATE product SET image = $1 WHERE id = $2 RETURNING image`, [url, productId]).then(data=>{
+        return data.rows;
+    });
+};

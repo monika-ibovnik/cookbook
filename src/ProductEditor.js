@@ -33,7 +33,7 @@ class ProductEditor extends React.Component{
                     productName : this.state.productName,
                     important: this.state.important ? this.state.important : null
                 }).then(response=>{
-                let productId = response.data.id;
+                let productId = response.data.productId;
                  if(this.props.resizedImage){
                     axios.post('/picture/upload',{
                         imgBase64: this.props.resizedImage,
