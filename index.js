@@ -6,7 +6,7 @@ const csurf = require('csurf');
 const bodyParser = require('body-parser');
 app.use(compression());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '1mb'}));
 
 //code to test if we are in the production
 if (process.env.NODE_ENV != 'production') {
@@ -46,8 +46,12 @@ function redirectIfNotLoggedIn(req,res,next){
 }
 
 const authRouter = require('./routes/authorisation.js');
+const productRouter = require('./routes/product.js');
+const pictureRouter = require('./routes/picture.js');
 
 app.use(authRouter);
+app.use(productRouter);
+app.use(pictureRouter);
 
 app.get('*', redirectIfNotLoggedIn, function(req, res) {
     res.sendFile(__dirname + '/index.html');
