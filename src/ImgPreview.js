@@ -1,16 +1,37 @@
 import React from 'react';
 
-export default class ImgPreview extends React.Component{
+//import {..} from './actions/actions';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {addResizedImgPrev} from './actions/productActions';
+class ImgPreview extends React.Component{
     constructor(props){
         super(props);
+        this.state={
+            file: null,
+            imgPrev : null
+        };
+        this.updateCanvas = this.updateCanvas.bind(this);
+        this.handleFileChange = this.handleFileChange.bind(this);
     }
-    componentDidMount() {
-        this.updateCanvas();
+    handleFileChange(e){
+        let file = e.target.files[0];
+        let reader = new FileReader();
+        reader.onloadend = () => {
+            this.setState({
+                file: file,
+                imgPrev: reader.result
+            }, ()=>{
+                this.updateCanvas();
+            });
+        }
+        reader.readAsDataURL(file);
     }
     updateCanvas() {
         const canvas = this.refs.canvas;
         const ctx = canvas.getContext('2d');
         let img = new Image();
+        let self = this;
         img.onload=function(){
             function checkImage(img){
                 let newimg = {};
@@ -38,14 +59,34 @@ export default class ImgPreview extends React.Component{
             };
             let resized = checkImage(img);;
             ctx.drawImage(img, 0, 0, img.width, img.height, resized.x, resized.y , resized.width, resized.height);
+            self.props.addResizedImgPrev(canvas.toDataURL());
         }
-        img.src=this.props.src;
+        img.src=this.state.imgPrev;
     }
     render() {
         return (
-            <div>
-                <canvas ref="canvas" width={300} height={300}/>
+            <div className="image-uploader">
+                <input type="file" onChange={this.handleFileChange}/><br/>
+                {this.state.imgPrev &&
+                    <canvas ref="canvas" width={300} height={300}/>
+                }
+                {!this.state.imgPrev &&
+                <img src="/img/foodbasket.svg"/>
+                }
             </div>
         );
     }
 }
+function mapStateToProps(state){
+    return{}
+}
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators(
+        {
+            addResizedImgPrev
+        },
+        dispatch,
+    );
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ImgPreview);

@@ -10,41 +10,25 @@ class ProductEditor extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            file: null,
-            imgPrev : null
-        };
-        this.handleFileChange = this.handleFileChange.bind(this);
-    }
-    componentDidMount(){
-    }
-    handleFileChange(e){
-        let file = e.target.files[0];
-        let reader = new FileReader();
-        reader.onloadend = () => {
-            this.setState({
-                file: file,
-                imgPrev: reader.result
-            });
+            productName: '',
+            important: ''
         }
-        reader.readAsDataURL(file);
+        this.handleChange = this.handleChange.bind(this);
     }
-    handleSubmit(e){
+    handleChange(e){
+        this.setState({
+            [e.target.name]: e.target.value
+        });
     }
     render(){
         return(
-            <div className="add-product-form">
+            <div className="product-editor">
                 <form>
-                    <input type="text" name="productName" placeholder="Product name"/><br />
-                    <input type="file" onChange={this.handleFileChange}/><br/>
-                    <input type="text" name="important" placeholder="Important notes"/><br />
+                    <input type="text" name="productName" placeholder="Product name" value={this.state.productName} onChange={this.handleChange}/>*<br />
+                    <textarea name="important" placeholder="Important notes" value={this.state.important} onChange={this.handleChange}></textarea><br />
+                    <ImgPreview/>
                     <input type="submit" value="Add"/><button>Cancel</button>
                 </form>
-                {!this.state.imgPrev &&
-                    <img src="/img/foodbasket.svg"/>
-                }
-                {this.state.imgPrev &&
-                    <ImgPreview src={this.state.imgPrev} file={this.state.file}/>
-                }
             </div>
         );
     }
@@ -52,7 +36,7 @@ class ProductEditor extends React.Component{
 
 function mapStateToProps(state){
     return{
-
+        productImg : state.product.resizedImage
     }
 }
 
