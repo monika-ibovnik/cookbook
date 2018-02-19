@@ -10,11 +10,11 @@
    version="1.1"
    x="0px"
    y="0px"
-   viewBox="0 0 300 300"
+   viewBox="0 0 200 200"
    id="svg10"
    sodipodi:docname="foodbasket.svg"
-   width="300"
-   height="300"
+   width="200"
+   height="200"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
   <metadata
      id="metadata16">
@@ -45,14 +45,14 @@
      showgrid="false"
      inkscape:snap-page="true"
      inkscape:zoom="0.7071068"
-     inkscape:cx="48.114388"
+     inkscape:cx="-199.37298"
      inkscape:cy="84.462156"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="svg10" />
   <g
-     transform="matrix(2.6888883,0,0,2.6888887,15.555575,-2545.2403)"
+     transform="matrix(1.7925923,0,0,1.7925926,10.370382,-1696.827)"
      id="g4"
      style="fill:#bec8b7">
     <path
@@ -66,10 +66,10 @@
        inkscape:connector-curvature="0" />
   </g>
   <rect
-     style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#bec8b7;stroke-width:15.51671791;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
+     style="opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#bec8b7;stroke-width:10.34447956;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:markers fill stroke"
      id="rect823"
-     width="284.48328"
-     height="284.48328"
-     x="7.7583528"
-     y="7.7583475" />
+     width="189.65552"
+     height="189.65552"
+     x="5.1722336"
+     y="5.1722097" />
 </svg>

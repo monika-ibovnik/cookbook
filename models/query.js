@@ -25,3 +25,9 @@ exports.dbUpdateProductPic = function(url, productId){
         return data.rows;
     });
 };
+
+exports.dbGetAllProducts = function(userid){
+    return db.query(`SELECt * FROM product WHERE userid=$1`, [userid]).then(data=>{
+        return data.rows;
+    });
+};

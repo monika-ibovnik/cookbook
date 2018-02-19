@@ -3,8 +3,9 @@ import axios from './axios';
 //import {..} from './actions/actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-
+import {hideModal} from './actions/productActions';
 import ImgPreview from './ImgPreview';
+import './ProductEditor.css';
 
 class ProductEditor extends React.Component{
     constructor(props){
@@ -39,7 +40,7 @@ class ProductEditor extends React.Component{
                         imgBase64: this.props.resizedImage,
                         productId: productId
                     }).then(response=>{
-                        console.log('success!', response.data);
+                        this.props.hideModal();
                     });
                 }
             })
@@ -48,14 +49,17 @@ class ProductEditor extends React.Component{
     render(){
         return(
             <div className="product-editor">
+                <h3>Add a new product</h3>
                 {this.state.error &&
                     <p className="error-message">{this.state.error}</p>
                 }
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" name="productName" placeholder="Product name" value={this.state.productName} onChange={this.handleChange}/>*<br />
-                    <textarea name="important" placeholder="Important notes" value={this.state.important} onChange={this.handleChange}></textarea><br />
+                    <div className="inputs">
+                        <input type="text" name="productName" placeholder="Product name" value={this.state.productName} onChange={this.handleChange}/>*<br />
+                        <textarea name="important" placeholder="Important notes" value={this.state.important} onChange={this.handleChange}></textarea><br />
+                    </div>
                     <ImgPreview/>
-                    <input type="submit" value="Add"/><button>Cancel</button>
+                    <input type="submit" value="Add"/><input type="button" onClick={this.props.hideModal} value="Cancel"/>
                 </form>
             </div>
         );
@@ -70,7 +74,9 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
     return bindActionCreators(
-        {},
+        {
+            hideModal
+        },
         dispatch,
     );
 }

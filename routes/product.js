@@ -11,4 +11,11 @@ router.post('/product/edit', (req,res)=>{
         });
     });
 });
+
+router.get('/product/getall', (req, res)=>{
+    let userid = req.session.user.id;
+    Query.dbGetAllProducts(userid).then(result=>{
+        res.json(result);
+    });
+});
 module.exports=router;

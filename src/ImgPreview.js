@@ -68,7 +68,7 @@ class ImgPreview extends React.Component{
             <div className="image-uploader">
                 <input type="file" onChange={this.handleFileChange}/><br/>
                 {this.state.imgPrev &&
-                    <canvas ref="canvas" width={300} height={300}/>
+                    <canvas ref="canvas" width={200} height={200}/>
                 }
                 {!this.state.imgPrev &&
                 <img src="/img/foodbasket.svg"/>
