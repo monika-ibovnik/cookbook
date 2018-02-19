@@ -14,7 +14,7 @@ function Logo(props){
 function Menu(props){
     return(
         <nav>
-            <Link to="/">Dashboard</Link><Link to="/cookbook">Cookbook</Link><Link to="/products">Products</Link><Link to="/settings">Settings</Link><a href="/logout">Logout</a>
+            <Link to="/">Dashboard</Link><Link to="/Recipes">Recipes</Link><Link to="/products">Products</Link><Link to="/settings">Settings</Link><a href="/logout">Logout</a>
         </nav>
     );
 }

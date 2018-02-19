@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
 import Dashboard from './Dashboard';
-import Cookbook from './Cookbook';
+import Recipes from './Recipes';
 import Products from './Products';
 import Settings from './Settings';
 import ModalComponent from './ModalComponent';
@@ -29,7 +29,7 @@ class App extends React.Component{
                 <BrowserRouter>
                     <Layout firstname={this.props.firstname}>
                         <Route exact path='/' component={Dashboard}/>
-                        <Route path='/cookbook' component={Cookbook}/>
+                        <Route path='/recipes' component={Recipes}/>
                         <Route path='/products' component={Products}/>
                         <Route path='/settings' component={Settings}/>
                     </Layout>
