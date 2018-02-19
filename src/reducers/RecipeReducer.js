@@ -1,10 +1,6 @@
-export default function(state = {}, action){
-    if(action.type == 'INIT_RECIPE'){
-        return Object.assign({}, state, action.payload);
-    }
+export default function(state = {recipeSteps: []}, action){
     if(action.type == 'ADD_STEP'){
-        let newArr = state.recipeSteps.concat(action.payload);
-        return Object.assign({}, state, state.recipeSteps = newArr);
+        return Object.assign({}, state, {recipeSteps : state.recipeSteps.concat(action.payload)});
     }
     return state;
 }

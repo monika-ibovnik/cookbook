@@ -12,9 +12,6 @@ class RecipeEditor extends React.Component{
     constructor(props){
         super(props);
     }
-    componentDidMount(){
-        this.props.initRecipe();
-    }
     render(){
         return(
             <div>
