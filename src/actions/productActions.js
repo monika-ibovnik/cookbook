@@ -5,20 +5,10 @@ export function addResizedImgPrev(imgBase64){
         payload: {resizedImage: imgBase64}
     });
 }
-
-export function showModal(){
+export function setResizedImageToNull(){
     return({
-        type: 'SHOW_MODAL',
-        payload: {
-            showModal: true
-        }
-    });
-}
-export function hideModal(){
-    return({
-        type: 'HIDE_MODAL',
-        payload: {
-            showModal: false,
+        type: 'SET_RESIZED_IMAGE_TO_NULL',
+        payload:{
             resizedImage: null
         }
     });

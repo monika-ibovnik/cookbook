@@ -3,7 +3,7 @@ import axios from './axios';
 //import {..} from './actions/actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {hideModal} from './actions/productActions';
+import {hideModal} from './actions/modalActions';
 import ImgPreview from './ImgPreview';
 import './ProductEditor.css';
 
@@ -42,6 +42,8 @@ class ProductEditor extends React.Component{
                     }).then(response=>{
                         this.props.hideModal();
                     });
+                }else{
+                    this.props.hideModal();
                 }
             })
         }

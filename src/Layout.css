@@ -3,6 +3,13 @@ html, body{
     padding: 0;
     box-sizing: border-box;
 }
+
+div#app{
+    display:grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto 1fr 50px;
+    height: 100vh;
+}
 a{
     text-decoration: none;
 }
@@ -23,7 +30,11 @@ nav a{
     color: black;
     margin-left: 20px;
 }
-
 main{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 0 100%;
+}
+div#modal-container{
     position: relative;
 }

@@ -1,0 +1,17 @@
+div.dashboard{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+}
+div.welcomeMessage{
+    background-color: #fc5c65;
+}
+div.recipeShortcut{
+    background-color: #2d98da;
+}
+div.productShortcut{
+    background-color: #26de81
+}
+div.menuShortcut{
+    background-color:#fed330
+}

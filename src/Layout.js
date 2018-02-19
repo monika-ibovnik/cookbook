@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+
 import './Layout.css';
 
 function Logo(props){
@@ -27,9 +28,7 @@ export default function Layout(props){
                     <Menu />
                 }
             </header>
-            <main>
-                {props.children}
-            </main>
+            {props.children}
             <footer>
                 <p>&copy; cookbook</p>
             </footer>
