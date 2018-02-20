@@ -14,9 +14,24 @@ class RecipeStepList extends React.Component{
         this.props.addToStepsArray(value);
     }
     render(){
+        //making a list
+        let inputListArr = this.props.recipeSteps;
+        inputListArr = inputListArr.map((value,index)=>{
+            console.log(index,value);
+            return (
+                <div key={index}>
+                    <span>{index+1}</span><RecipeStepInput defaultValue={value}/>
+                </div>
+            );
+        });
+        inputListArr.push(
+            <div  key={inputListArr.length}>
+                <span>{inputListArr.length+1}</span><RecipeStepInput onKeyDown={this.handleKeyDown} autofocus={true}/>
+            </div>
+        );
         return(
             <div>
-                <RecipeStepInput onKeyDown={this.handleKeyDown} autofocus={true}/>
+                {inputListArr}
             </div>
         );
     }
