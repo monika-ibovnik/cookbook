@@ -18,4 +18,14 @@ router.get('/product/getall', (req, res)=>{
         res.json(result);
     });
 });
+
+router.post('/product/image', (req,res)=>{
+    let {image, productId} = req.body;
+    Query.dbUpdateProductPic(image,productId).then(()=>{
+        res.json({message: 'success'});
+    }).catch(err=>{
+        console.log(err);
+        res.json({error: 'error'});
+    });
+});
 module.exports=router;

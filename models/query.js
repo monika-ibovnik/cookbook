@@ -27,7 +27,17 @@ exports.dbUpdateProductPic = function(url, productId){
 };
 
 exports.dbGetAllProducts = function(userid){
-    return db.query(`SELECt * FROM product WHERE userid=$1`, [userid]).then(data=>{
+    return db.query(`SELECT * FROM product WHERE userid=$1`, [userid]).then(data=>{
         return data.rows;
     });
+};
+
+exports.dbInsertRecipe = function(title, userid){
+    return db.query(`INSERT INTO recipe (title, userid) VALUES ($1,$2) RETURNING id`, [title, userid]).then(data=>{
+        return data.rows;
+    });
+};
+
+exports.dbUpdateRecipeImage = function(image, id){
+    return db.query(`UPDATE recipe SET image=$1 WHERE id=$2`, [image, id]);
 };

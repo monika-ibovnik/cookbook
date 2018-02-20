@@ -1,0 +1,9 @@
+Query.dbUpdateProductPic(url, productId).then(result=>{
+    res.json({
+        message: 'success',
+        imgUrl: result[0].image
+    });
+}).catch((err)=>{
+    console.log(err);
+    res.json({error: 'Something went wrong. Please try later.'});
+});

@@ -48,10 +48,12 @@ function redirectIfNotLoggedIn(req,res,next){
 const authRouter = require('./routes/authorisation.js');
 const productRouter = require('./routes/product.js');
 const pictureRouter = require('./routes/picture.js');
+const recipeRouter = require('./routes/recipe.js');
 
 app.use(authRouter);
 app.use(productRouter);
 app.use(pictureRouter);
+app.use(recipeRouter);
 
 app.get('*', redirectIfNotLoggedIn, function(req, res) {
     res.sendFile(__dirname + '/index.html');

@@ -1,9 +1,9 @@
 import React from 'react';
 
-//import {..} from './actions/actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {addResizedImgPrev} from './actions/productActions';
+import {addResizedImgPrev} from './actions/pictureActions';
+
 class ImgPreview extends React.Component{
     constructor(props){
         super(props);

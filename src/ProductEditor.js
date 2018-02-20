@@ -4,6 +4,7 @@ import axios from './axios';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {hideModal} from './actions/modalActions';
+//import {setResizedImageToNull} from './actions/pictureActions';
 import ImgPreview from './ImgPreview';
 import './ProductEditor.css';
 
@@ -35,12 +36,17 @@ class ProductEditor extends React.Component{
                     important: this.state.important ? this.state.important : null
                 }).then(response=>{
                 let productId = response.data.productId;
-                 if(this.props.resizedImage){
+                if(this.props.resizedImage){
                     axios.post('/picture/upload',{
-                        imgBase64: this.props.resizedImage,
-                        productId: productId
+                        imgBase64: this.props.resizedImage
                     }).then(response=>{
-                        this.props.hideModal();
+                        let imgUrl = response.data.imgUrl;
+                        axios.post('/product/image', {
+                            image: imgUrl,
+                            productId: productId
+                        }).then(result=>{
+                            this.props.hideModal();
+                        })
                     });
                 }else{
                     this.props.hideModal();
@@ -70,7 +76,7 @@ class ProductEditor extends React.Component{
 
 function mapStateToProps(state){
     return{
-        resizedImage : state.product.resizedImage
+        resizedImage : state.picture.resizedImage
     }
 }
 

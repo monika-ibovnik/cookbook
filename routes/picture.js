@@ -4,7 +4,6 @@ const knox = require('knox');
 const fs = require('fs');
 const util = require('util');
 const uidSafe = require('uid-safe');
-const Query = require('../models/query.js');
 
 var writeFile = util.promisify(fs.writeFile);
 var stat = util.promisify(fs.stat);
@@ -56,22 +55,13 @@ function uploadToS3(imgToSave){
 }
 
 router.post('/picture/upload', (req,res)=>{
-    let {productId} = req.body;
     let {imgBase64} = req.body;
     let imgToSave = imgBase64.replace(/^data:image\/png;base64,/, '');
     uploadToS3(imgToSave).then(url=>{
-        Query.dbUpdateProductPic(url, productId).then(result=>{
-            res.json({
-                message: 'success',
-                imgUrl: result[0].image
-            });
-        }).catch((err)=>{
-            console.log(err);
-            res.json({error: 'Something went wrong. Please try later.'});
-        });
+        res.json({imgUrl: url});
     }).catch(err=>{
         console.log(err);
-        res.json({error: "Something went wrong. Please try later"});
+        res.json({error: "S3Error Something went wrong. Please try later"});
     });
 });
 
