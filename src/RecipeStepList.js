@@ -9,9 +9,9 @@ import RecipeStepInput from './RecipeStepInput';
 class RecipeStepList extends React.Component{
     constructor(props){
         super(props);
-        this.handleKeyDown = this.handleKeyDown.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
-    handleKeyDown(value, index){
+    handleChange(value, index){
         if(index === undefined){
             if(value!=''){
                 this.props.addToStepsArray(value);
@@ -26,14 +26,14 @@ class RecipeStepList extends React.Component{
         inputListArr = inputListArr.map((value,index)=>{
             return (
                 <div key={index}>
-                    <span>{index+1}</span><RecipeStepInput index={index} defaultValue={value} onKeyDown={this.handleKeyDown}/>
+                    <span>{index+1}</span><RecipeStepInput index={index} defaultValue={value} onKeyDown={this.handleChange} onBlur={this.handleChange}/>
                 </div>
             );
         });
         let lastIndex = inputListArr.length;
         inputListArr.push(
             <div  key={inputListArr.length}>
-                <span>{inputListArr.length+1}</span><RecipeStepInput onKeyDown={this.handleKeyDown} autofocus={true}/>
+                <span>{inputListArr.length+1}</span><RecipeStepInput onKeyDown={this.handleChange} onBlur={this.handleChange} placeholder="Leave it empty if you're done" autofocus={true}/>
             </div>
         );
         return(
