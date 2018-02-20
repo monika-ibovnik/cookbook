@@ -14,3 +14,11 @@ export function updateStepsArray(value,index){
         }
     });
 }
+export function initFocus(){
+    return({
+        type: 'SET_FOCUS',
+        payload: {
+            autofocus: true
+        }
+    });
+}

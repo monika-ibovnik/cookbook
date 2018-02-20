@@ -10,5 +10,8 @@ export default function(state = {recipeSteps: []}, action){
             return value;
         })});
     }
+    if(action.type=='SET_FOCUS'){
+        return Object.assign({}, state, action.payload);
+    }
     return state;
 }

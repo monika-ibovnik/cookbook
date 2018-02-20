@@ -12,7 +12,16 @@ import RecipeStepList from './RecipeStepList';
 class RecipeEditor extends React.Component{
     constructor(props){
         super(props);
-        this.handleSubmit = this.handleSubmit.bind();
+        this.state = {
+            recipeName: ''
+        };
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    handleChange(e){
+        this.setState({
+            [e.target.name]: e.target.value
+        });
     }
     handleSubmit(e){
         e.preventDefault();
@@ -21,6 +30,7 @@ class RecipeEditor extends React.Component{
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
+                    <input name="recipeName" value={this.state.recipeName} onChange={this.handleChange} autoFocus/>
                     <div className="recipe-steps">
                         <RecipeStepList list={this.props.recipeSteps}/>
                     </div>
@@ -33,15 +43,14 @@ class RecipeEditor extends React.Component{
 
 function mapStateToProps(state){
     return{
-        recipeSteps : state.recipe.recipeSteps
+        recipeSteps : state.recipe.recipeSteps,
+        autofocus : state.recipe.autofocus
     }
 }
 
 function mapDispatchToProps(dispatch){
     return bindActionCreators(
-        {
-            initRecipe
-        },
+        {},
         dispatch,
     );
 }

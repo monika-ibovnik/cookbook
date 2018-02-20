@@ -32,7 +32,9 @@ export default class RecipeStepInput extends React.Component{
                         this.inputValue = input;
                    }}
                    onBlur={this.handleBlur}
-                   onKeyDown={this.handleKeyDown}/>
+                   onFocus={this.props.onFocus}
+                   onKeyDown={this.handleKeyDown}
+                   />
         );
     }
 }
