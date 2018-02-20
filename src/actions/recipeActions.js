@@ -5,3 +5,12 @@ export function addToStepsArray(value){
         payload: value
     });
 }
+export function updateStepsArray(value,index){
+    return({
+        type: 'UPDATE_STEP',
+        payload: {
+            index: index,
+            value: value
+        }
+    });
+}

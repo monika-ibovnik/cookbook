@@ -11,15 +11,17 @@ export default class RecipeStepInput extends React.Component{
         }
     }
     handleKeyDown(e){
+        let arrIndex = this.props.index;
         if(e.keyCode == 13){
             let inputValue = this.inputValue;
-            this.props.onKeyDown(this.inputValue.value);
+            this.props.onKeyDown(this.inputValue.value, arrIndex);
         }
     }
     render(){
         return(
             <input type="text"
                    name="inputValue"
+                   defaultValue={this.props.defaultValue}
                    ref={(input)=>{
                         this.inputValue = input;
                    }}

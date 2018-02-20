@@ -4,6 +4,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import ProductEditor from './ProductEditor';
+import RecipeEditor from './RecipeEditor';
 
 import './ModalComponent.css';
 
@@ -18,6 +19,12 @@ class ModalComponent extends React.Component{
             return(
                 <div className="component">
                     <ProductEditor />
+                </div>
+            );
+        }else if(this.props.component == 'RecipeEditor'){
+            return(
+                <div className="component">
+                    <RecipeEditor />
                 </div>
             );
         }else{

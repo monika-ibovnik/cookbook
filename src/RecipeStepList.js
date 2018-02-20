@@ -1,7 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {addToStepsArray} from './actions/recipeActions.js'
+import {
+    addToStepsArray,
+    updateStepsArray} from './actions/recipeActions.js'
 import RecipeStepInput from './RecipeStepInput';
 
 class RecipeStepList extends React.Component{
@@ -9,21 +11,26 @@ class RecipeStepList extends React.Component{
         super(props);
         this.handleKeyDown = this.handleKeyDown.bind(this);
     }
-    handleKeyDown(value){
-        console.log(value);
-        this.props.addToStepsArray(value);
+    handleKeyDown(value, index){
+        if(index === undefined){
+            if(value!=''){
+                this.props.addToStepsArray(value);
+            }
+        }else{
+            this.props.updateStepsArray(value, index);
+        }
     }
     render(){
         //making a list
         let inputListArr = this.props.recipeSteps;
         inputListArr = inputListArr.map((value,index)=>{
-            console.log(index,value);
             return (
                 <div key={index}>
-                    <span>{index+1}</span><RecipeStepInput defaultValue={value}/>
+                    <span>{index+1}</span><RecipeStepInput index={index} defaultValue={value} onKeyDown={this.handleKeyDown}/>
                 </div>
             );
         });
+        let lastIndex = inputListArr.length;
         inputListArr.push(
             <div  key={inputListArr.length}>
                 <span>{inputListArr.length+1}</span><RecipeStepInput onKeyDown={this.handleKeyDown} autofocus={true}/>
@@ -46,7 +53,8 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
     return bindActionCreators(
         {
-            addToStepsArray
+            addToStepsArray,
+            updateStepsArray
         },
         dispatch,
     );

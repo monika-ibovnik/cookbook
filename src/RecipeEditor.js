@@ -12,14 +12,20 @@ import RecipeStepList from './RecipeStepList';
 class RecipeEditor extends React.Component{
     constructor(props){
         super(props);
+        this.handleSubmit = this.handleSubmit.bind();
+    }
+    handleSubmit(e){
+        e.preventDefault();
     }
     render(){
         return(
             <div>
-                <div className="recipe-steps">
-                    <h4>Add steps</h4>
-                    <RecipeStepList list={this.props.recipeSteps}/>
-                </div>
+                <form onSubmit={this.handleSubmit}>
+                    <div className="recipe-steps">
+                        <RecipeStepList list={this.props.recipeSteps}/>
+                    </div>
+                    <input type="submit" value="Save the recipe"/>
+                </form>
             </div>
         );
     }
