@@ -1,47 +1,29 @@
 import React from 'react';
 
-//import {..} from './actions/actions';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import {addToStepsArray} from './actions/recipeActions.js';
-
-class RecipeStepInput extends React.Component{
+export default class RecipeStepInput extends React.Component{
     constructor(props){
         super(props);
-        this.state = {
-            inputValue : ''
-        }
-        this.handleChange = this.handleChange.bind(this);
         this.handleKeyDown = this.handleKeyDown.bind(this);
     }
-    handleChange(e){
-        this.setState({
-            [e.target.name] : e.target.value
-        });
+    componentDidMount(){
+        if(this.props.autofocus==true){
+            this.inputValue.focus();
+        }
     }
     handleKeyDown(e){
         if(e.keyCode == 13){
-            this.props.addToStepsArray(this.state.inputValue);
+            let inputValue = this.inputValue;
+            this.props.onKeyDown(this.inputValue.value);
         }
     }
     render(){
         return(
-            <input name="inputValue" type="text" value={this.state.inputValue} onChange={this.handleChange} onKeyDown={this.handleKeyDown}/>
+            <input type="text"
+                   name="inputValue"
+                   ref={(input)=>{
+                        this.inputValue = input;
+                   }}
+                   onKeyDown={this.handleKeyDown}/>
         );
     }
 }
-
-function mapStateToProps(state){
-    return{
-    }
-}
-
-function mapDispatchToProps(dispatch){
-    return bindActionCreators(
-        {
-            addToStepsArray
-        },
-        dispatch,
-    );
-}
-export default connect(mapStateToProps, mapDispatchToProps)(RecipeStepInput);

@@ -7,6 +7,7 @@ import {initRecipe} from './actions/recipeActions';
 
 import RecipeProductSearchInput from './RecipeProductSearchInput';
 import RecipeStepInput from './RecipeStepInput';
+import RecipeStepList from './RecipeStepList';
 
 class RecipeEditor extends React.Component{
     constructor(props){
@@ -17,7 +18,7 @@ class RecipeEditor extends React.Component{
             <div>
                 <div className="recipe-steps">
                     <h4>Add steps</h4>
-                    <RecipeStepInput />
+                    <RecipeStepList list={this.props.recipeSteps}/>
                 </div>
             </div>
         );
