@@ -7,6 +7,7 @@ import {getAllProducts} from './actions/productActions.js';
 import {showModal, hideModal} from './actions/modalActions.js';
 
 import ProductList from './ProductList';
+import Menu from './Menu';
 
 import './Products.css';
 
@@ -20,11 +21,15 @@ class Products extends React.Component{
     }
     render(){
         return(
-            <div>
-                <h2>Products</h2>
-                <label>Search for a product: <input type="text" name="searchProduct" /></label>
-                <button onClick={this.addProduct}>Add new product</button>
-                <ProductList />
+            <div className="products">
+                <div className="product-list">
+                    <h2>Products</h2>
+                    <ProductList />
+                </div>
+                <div className="menu">
+                        <label><button onClick={this.addProduct}>+</button>Add new product</label>
+                        <Menu/>
+                </div>
             </div>
         );
     }

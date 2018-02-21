@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {addResizedImgPrev} from './actions/pictureActions';
 
+import './ImgPreview.css';
+
 class ImgPreview extends React.Component{
     constructor(props){
         super(props);
@@ -66,7 +68,10 @@ class ImgPreview extends React.Component{
     render() {
         return (
             <div className="image-uploader">
-                <input type="file" onChange={this.handleFileChange}/><br/>
+                <div className="upload">
+                    <input id="uploadImg" type="file" onChange={this.handleFileChange}/><br/>
+                    <label htmlFor="uploadImg">Upload image</label>
+                </div>
                 {this.state.imgPrev &&
                     <canvas ref="canvas" width={200} height={200}/>
                 }

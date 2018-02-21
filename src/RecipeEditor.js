@@ -4,13 +4,15 @@ import axios from './axios';
 //import {..} from './actions/actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {initRecipe} from './actions/recipeActions';
-
+import {
+    initRecipe} from './actions/recipeActions';
 import RecipeProductSearchInput from './RecipeProductSearchInput';
 import RecipeStepInput from './RecipeStepInput';
 import RecipeStepList from './RecipeStepList';
 import ImgPreview from './ImgPreview';
 import ProductSearchInput from './ProductSearchInput';
+
+import './RecipeEditor.css';
 
 class RecipeEditor extends React.Component{
     constructor(props){

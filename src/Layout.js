@@ -11,22 +11,11 @@ function Logo(props){
     }
 }
 
-function Menu(props){
-    return(
-        <nav>
-            <Link to="/">Dashboard</Link><Link to="/Recipes">Recipes</Link><Link to="/products">Products</Link><Link to="/settings">Settings</Link><a href="/logout">Logout</a>
-        </nav>
-    );
-}
-
 export default function Layout(props){
     return(
         <div id="app">
             <header>
                 <Logo />
-                {props.firstname &&
-                    <Menu />
-                }
             </header>
             {props.children}
             <footer>
