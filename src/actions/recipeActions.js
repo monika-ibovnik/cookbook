@@ -22,3 +22,14 @@ export function initFocus(){
         }
     });
 }
+
+export function getAllRecipes(){
+    return axios.get('/recipe/getall').then(response=>{
+        return({
+            type: 'GET_ALL_RECIPES',
+            payload: {
+                recipeList: response.data
+            }
+        });
+    });
+}

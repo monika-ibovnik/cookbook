@@ -13,5 +13,8 @@ export default function(state = {recipeSteps: []}, action){
     if(action.type=='SET_FOCUS'){
         return Object.assign({}, state, action.payload);
     }
+    if(action.type == 'GET_ALL_RECIPES'){
+        return Object.assign({}, state, action.payload);
+    }
     return state;
 }

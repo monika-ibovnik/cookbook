@@ -37,4 +37,14 @@ router.post('/recipe/steps', (req,res)=>{
         res.json({error: 'Something went wrong.'});
     });
 });
+
+router.get('/recipe/getall', (req,res)=>{
+    let userid = req.session.user.id;
+    Query.dbGetAllRecipes(userid).then(result=>{
+        res.json(result);
+    }).catch(err=>{
+        console.log(err);
+        res.sjon({errror: 'Something went wrong. Please try later.'});
+    });
+});
 module.exports=router;

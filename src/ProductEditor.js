@@ -67,7 +67,9 @@ class ProductEditor extends React.Component{
                         <textarea name="important" placeholder="Important notes" value={this.state.important} onChange={this.handleChange}></textarea><br />
                     </div>
                     <ImgPreview/>
-                    <input type="submit" value="Add"/><input type="button" onClick={this.props.hideModal} value="Cancel"/>
+                    <div className="buttons">
+                        <input type="submit" value="Add"/><input type="button" onClick={this.props.hideModal} value="Cancel"/>
+                    </div>
                 </form>
             </div>
         );

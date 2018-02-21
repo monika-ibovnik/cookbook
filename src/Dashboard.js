@@ -23,13 +23,13 @@ class Dashboard extends React.Component{
                 <div className="welcomeMessage"><h2>Welcome, {this.props.firstname}</h2></div>
                 <div className="productShortcut">
                     <div>
-                        <Link to="/products">Add Product</Link>
+                        <Link to="/products">Products</Link>
                         <button  onClick={this.addProductShortcut}>Add product</button>
                     </div>
                 </div>
                 <div className="recipeShortcut">
                 <div>
-                    <Link to="/recipe">Add Product</Link>
+                    <Link to="/recipes">Recipes</Link>
                     <button  onClick={this.addRecipeShortcut}>Add recipe</button>
                 </div>
                 </div>

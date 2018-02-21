@@ -6,9 +6,8 @@ export default function Menu(props){
     return(
         <nav>
             <Link to="/">Dashboard</Link><br/>
-            <Link to="/Recipes">Recipes</Link><br/>
+            <Link to="/recipes">Recipes</Link><br/>
             <Link to="/products">Products</Link><br/>
-            <Link to="/settings">Settings</Link><br/>
             <a href="/logout">Logout</a>
         </nav>
     );

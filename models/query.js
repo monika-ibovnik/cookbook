@@ -47,3 +47,9 @@ exports.dbInsertRecipeStep = function(step, index, recipeid){
         console.log('insert step error',err);
     });
 };
+
+exports.dbGetAllRecipes = function(userid){
+    return db.query(`SELECT * FROM recipe WHERE userid=$1`, [userid]).then(data=>{
+        return data.rows;
+    });
+};

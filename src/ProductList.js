@@ -4,20 +4,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import './ProductList.css';
-
-function ProductListElement(props){
-    return(
-        <div className="product-element">
-            <div>
-            <p>{props.name}</p>
-            </div>
-            <div>
-                <img src={props.image ? props.image : '/img/foodbasket.svg'} />
-            </div>
-        </div>
-    );
-}
+import ListElement from './ListElement'
 
 class ProductList extends React.Component{
     constructor(props){
@@ -34,7 +21,7 @@ class ProductList extends React.Component{
             let productList = this.props.productList;
             productList = productList.map((value, index)=>{
                 return (
-                    <ProductListElement key={index} image={value.image} name={value.name} onClick={()=>console.log('click')}/>
+                    <ListElement key={index} image={value.image} name={value.name} onClick={()=>console.log('click')}/>
                 );
             });
             return(

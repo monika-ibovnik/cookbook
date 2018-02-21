@@ -10,6 +10,7 @@ import ProductList from './ProductList';
 import Menu from './Menu';
 
 import './Products.css';
+import './PageWithList.css';
 
 class Products extends React.Component{
     constructor(props){
@@ -21,14 +22,14 @@ class Products extends React.Component{
     }
     render(){
         return(
-            <div className="products">
-                <div className="product-list">
+            <div className="products page-with-list">
+                <div className="menu">
+                    <label><button onClick={this.addProduct}>+</button>Add new product</label>
+                    <Menu/>
+                </div>
+                <div className="list">
                     <h2>Products</h2>
                     <ProductList />
-                </div>
-                <div className="menu">
-                        <label><button onClick={this.addProduct}>+</button>Add new product</label>
-                        <Menu/>
                 </div>
             </div>
         );

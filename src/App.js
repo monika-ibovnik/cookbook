@@ -2,7 +2,8 @@ import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import Layout from './Layout';
 import {getUserInfo} from './actions/userActions';
-import {getAllProducts} from './actions/productActions.js';
+import {getAllProducts} from './actions/productActions';
+import {getAllRecipes} from './actions/recipeActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
@@ -53,7 +54,7 @@ function mapDispatchToProps(dispatch){
     return bindActionCreators(
             {
                 getUserInfo,
-                getAllProducts
+                getAllProducts,
             },
             dispatch,
     );
