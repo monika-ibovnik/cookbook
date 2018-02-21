@@ -15,9 +15,6 @@ class Products extends React.Component{
         super(props);
         this.addProduct = this.addProduct.bind(this);
     }
-    componentDidMount(){
-        this.props.getAllProducts();
-    }
     addProduct(){
         this.props.showModal('ProductEditor');
     }

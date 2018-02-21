@@ -2,6 +2,7 @@ import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import Layout from './Layout';
 import {getUserInfo} from './actions/userActions';
+import {getAllProducts} from './actions/productActions.js';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
@@ -17,6 +18,7 @@ class App extends React.Component{
     }
     componentDidMount(){
         this.props.getUserInfo();
+        this.props.getAllProducts();
     }
     render(){
         return(
@@ -50,7 +52,8 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
     return bindActionCreators(
             {
-                getUserInfo
+                getUserInfo,
+                getAllProducts
             },
             dispatch,
     );

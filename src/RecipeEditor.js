@@ -10,6 +10,7 @@ import RecipeProductSearchInput from './RecipeProductSearchInput';
 import RecipeStepInput from './RecipeStepInput';
 import RecipeStepList from './RecipeStepList';
 import ImgPreview from './ImgPreview';
+import ProductSearchInput from './ProductSearchInput';
 
 class RecipeEditor extends React.Component{
     constructor(props){
@@ -59,6 +60,9 @@ class RecipeEditor extends React.Component{
                 <form onSubmit={this.handleSubmit}>
                     <input name="recipeName" value={this.state.recipeName} onChange={this.handleChange} autoFocus/>
                     <ImgPreview />
+                    <div className="recipe-products">
+                        <ProductSearchInput />
+                    </div>
                     <div className="recipe-steps">
                         <RecipeStepList list={this.props.recipeSteps}/>
                     </div>

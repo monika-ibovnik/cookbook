@@ -10,3 +10,12 @@ export function getAllProducts(){
         });
     });
 }
+
+export function searchForProduct(value){
+    return({
+        type: 'SEARCH_FOR_PRODUCT',
+        payload:{
+            productName: value
+        }
+    });
+}
