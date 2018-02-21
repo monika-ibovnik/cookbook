@@ -41,3 +41,9 @@ exports.dbInsertRecipe = function(title, userid){
 exports.dbUpdateRecipeImage = function(image, id){
     return db.query(`UPDATE recipe SET image=$1 WHERE id=$2`, [image, id]);
 };
+
+exports.dbInsertRecipeStep = function(step, index, recipeid){
+    return db.query(`INSERT INTO step (step, index, recipeid) VALUES ($1,$2,$3)`, [step,index, recipeid]).catch(err=>{
+        console.log('insert step error',err);
+    });
+};

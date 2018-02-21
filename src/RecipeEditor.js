@@ -47,7 +47,15 @@ class RecipeEditor extends React.Component{
                         }).then(result=>{
                             console.log(result);
                         });
-                    })
+                    });
+                }
+                if(this.props.recipeSteps.length!=0){
+                    axios.post('/recipe/steps',{
+                        steps: this.props.recipeSteps,
+                        recipeId: recipeId
+                    }).then(result=>{
+                        console.log(result.data);
+                    });
                 }
                 //here goes the code to upload steps, paralel to uploading image
             });
