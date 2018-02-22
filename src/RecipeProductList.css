@@ -1,3 +1,7 @@
 div.recipe-product-list p{
     display: inline-block;
 }
+
+p.added{
+    border: 1px solid green;
+}

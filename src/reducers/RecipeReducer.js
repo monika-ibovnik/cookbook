@@ -20,14 +20,30 @@ export default function(state = {
         return Object.assign({}, state, action.payload);
     }
     if(action.type == 'ADD_PRODUCT_TO_RECIPE'){
-        return Object.assign({}, state, {
-            recipeProducts : state.recipeProducts.concat(action.payload),
+        console.log(action.payload.id);
+        let addedProductId = action.payload.id;
+        console.log(state.recipeProducts);
+        let check = null;
+        state.recipeProducts.map((value,index)=>{
+            if(value.id == addedProductId){
+                check=index;
+            }
         });
+        if(check === null){
+            return Object.assign({}, state, {
+                recipeProducts : state.recipeProducts.concat(action.payload),
+            });
+        }else{
+            return Object.assign({},state, {alreadyAdded: check});
+        }
     }
     if(action.type=='REMOVE_ITEM'){
         let index = action.payload;
         let newProductArr = [...state.recipeProducts.slice(0,index), ...state.recipeProducts.slice(index+1)];
         return Object.assign({}, state, {recipeProducts: newProductArr});
+    }
+    if(action.type == 'RESET_ADDED'){
+        return Object.assign({}, state, action.payload);
     }
     return state;
 }

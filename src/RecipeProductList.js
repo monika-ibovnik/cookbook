@@ -4,7 +4,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import {removeItem} from './actions/recipeActions';
+import {
+    removeItem,
+    resetAdded
+    } from './actions/recipeActions';
 
 import './RecipeProductList.css';
 
@@ -19,8 +22,8 @@ class RecipeProductListElement extends React.Component{
     render(){
         return(
             <div>
-                <p>{this.props.value}</p><button onClick={this.removeItself}>-</button>
-                </div>
+                <p className={this.props.addedClass}>{this.props.value}</p><button onClick={this.removeItself}>-</button>
+            </div>
         );
     }
 }
@@ -32,9 +35,15 @@ class RecipeProductList extends React.Component{
     render(){
         let productArr = this.props.recipeProductList;
         productArr = productArr.map((value,index)=>{
-            return(
-                <RecipeProductListElement key={index} value={value.name} index={index} onClick={this.props.removeItem}/>
-            );
+            if(this.props.alreadyAdded == index){
+                return(
+                    <RecipeProductListElement addedClass="added" key={index} value={value.name} index={index} onClick={this.props.removeItem}/>
+                );
+            }else{
+                return(
+                    <RecipeProductListElement key={index} value={value.name} index={index} onClick={this.props.removeItem}/>
+                );
+            }
         });
         return(
             <div className="recipe-product-list">
@@ -46,7 +55,8 @@ class RecipeProductList extends React.Component{
 
 function mapStateToProps(state){
     return{
-        recipeProductList : state.recipe.recipeProducts
+        recipeProductList : state.recipe.recipeProducts,
+        alreadyAdded: state.recipe.alreadyAdded
     }
 }
 

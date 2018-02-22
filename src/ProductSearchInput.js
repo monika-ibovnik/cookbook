@@ -7,7 +7,9 @@ import {
     searchForProduct,
     resetSearchList
     } from './actions/productActions';
-
+import{
+    resetAdded
+    } from './actions/recipeActions';
 import{
     addProductToRecipe
 } from './actions/recipeActions';
@@ -25,6 +27,7 @@ class ProductSearchInput extends React.Component{
     }
     addProduct(e){
         e.preventDefault(e);
+        this.props.resetAdded();
         if(this.props.exactSearchResult){
             this.props.addProductToRecipe(this.props.exactSearchResult);
             this.props.resetSearchList();
@@ -77,7 +80,8 @@ function mapDispatchToProps(dispatch){
         {
             searchForProduct,
             resetSearchList,
-            addProductToRecipe
+            addProductToRecipe,
+            resetAdded
         },
         dispatch,
     );

@@ -47,3 +47,12 @@ export function removeItem(index){
         payload: index
     });
 }
+
+export function resetAdded(){
+    return({
+        type: 'RESET_ADDED',
+        payload: {
+            alreadyAdded: null
+        }
+    });
+}
