@@ -20,3 +20,10 @@ div.buttons input{
     width: 100px;
     margin-left: 20px;
 }
+p.error-message{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px;
+    color: white;
+    background-color: #eb3b5a;
+    text-align: center;
+}

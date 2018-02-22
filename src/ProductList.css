@@ -1,0 +1,21 @@
+div.list{
+    position: relative;
+}
+div.product-list-button div{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-left: 0px;
+    text-align:center;
+}
+
+div.product-list-button div button{
+    width: 150px;
+    height: 150px;
+    color: white;
+    background-color: #20bf6b;
+    border: none;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 22px;
+}

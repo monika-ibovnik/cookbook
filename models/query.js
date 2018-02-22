@@ -15,7 +15,7 @@ exports.dbGetUserByEmail = function(email){
 };
 
 exports.dbInsertProduct = function(productName, important, userid){
-    return db.query(`INSERT INTO product (name, important, userid) VALUES ($1, $2, $3) RETURNING id`, [productName, important, userid]).then(data=>{
+    return db.query(`INSERT INTO product (name, important, userid) VALUES ($1, $2, $3) RETURNING *`, [productName, important, userid]).then(data=>{
         return data.rows;
     });
 };
@@ -44,6 +44,12 @@ exports.dbUpdateRecipeImage = function(image, id){
 
 exports.dbInsertRecipeStep = function(step, index, recipeid){
     return db.query(`INSERT INTO step (step, index, recipeid) VALUES ($1,$2,$3)`, [step,index, recipeid]).catch(err=>{
+        console.log('insert step error',err);
+    });
+};
+
+exports.dbInsertRecipeProduct = function(productid, index, recipeid){
+    return db.query(`INSERT INTO recipe_product (product, recipeid) VALUES ($1,$2,$3)`, [productid,index, recipeid]).catch(err=>{
         console.log('insert step error',err);
     });
 };

@@ -24,7 +24,7 @@ router.post('/recipe/image', (req,res)=>{
     });
 });
 
-router.post('/recipe/steps', (req,res)=>{
+router.post('/recipe/addsteps', (req,res)=>{
     let {steps, recipeId} = req.body;
     Promise.all(
         steps.map((value, index)=>{
@@ -45,6 +45,20 @@ router.get('/recipe/getall', (req,res)=>{
     }).catch(err=>{
         console.log(err);
         res.sjon({errror: 'Something went wrong. Please try later.'});
+    });
+});
+
+router.post('/recipe/addproducts', (req,res)=>{
+    let {products, recipeId} = req.body;
+    Promise.all(
+        products.map(value=>{
+            Query.dbInsertRecipeProduct(value.id,recipeId);
+        })
+    ).then(()=>{
+        res.json({message: 'success'});
+    }).catch(err=>{
+        console.log('error', err);
+        res.json({error: 'Something went wrong'});
     });
 });
 module.exports=router;

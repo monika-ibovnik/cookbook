@@ -6,9 +6,7 @@ router.post('/product/edit', (req,res)=>{
     let {productName, important} = req.body;
     let userid = req.session.user.id;
     Query.dbInsertProduct(productName, important, userid).then(results=>{
-        res.json({
-            productId: results[0].id
-        });
+        res.json(results[0]);
     });
 });
 

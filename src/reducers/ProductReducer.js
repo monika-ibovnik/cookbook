@@ -2,6 +2,11 @@ export default function(state = {}, action){
     if(action.type == 'GET_ALL_PRODUCTS'){
         return Object.assign({}, state, action.payload);
     }
+    if(action.type == 'ADD_PRODUCT'){
+        let newArray = state.productList.slice();
+        newArray.unshift(action.payload);
+        return Object.assign({}, state, {productList: newArray});
+    }
     if(action.type == 'SEARCH_FOR_PRODUCT'){
         let searchedProduct = action.payload.productName.toLowerCase();
         let searchArray = [];

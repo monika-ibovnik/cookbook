@@ -14,6 +14,7 @@ div.component{
     padding: 2px 20px 10px 20px;
     display: block;
     box-shadow: 0px 0px 10px #4b6584;
+    z-index: 100;
 }
 
 h3{

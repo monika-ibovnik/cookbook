@@ -29,3 +29,11 @@ export function resetSearchList(){
         }
     });
 }
+
+export function addProductToTheList(value){
+    console.log('action!');
+    return({
+        type: 'ADD_PRODUCT',
+        payload: value
+    });
+}

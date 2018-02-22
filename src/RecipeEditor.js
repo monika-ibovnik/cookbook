@@ -6,6 +6,9 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {
     initRecipe} from './actions/recipeActions';
+import {
+    hideModal} from './actions/modalActions';
+
 import RecipeStepInput from './RecipeStepInput';
 import RecipeStepList from './RecipeStepList';
 import ImgPreview from './ImgPreview';
@@ -51,15 +54,23 @@ class RecipeEditor extends React.Component{
                         });
                     });
                 }
+                if(this.props.recipeProducts.length!=0){
+                    axios.post('/recipe/addproducts',{
+                        products: this.props.recipeProducts,
+                        recipeId: recipeId
+                    }).then(result=>{
+                        console.log(result.data);
+                    })
+                }
                 if(this.props.recipeSteps.length!=0){
-                    axios.post('/recipe/steps',{
+                    axios.post('/recipe/addsteps',{
                         steps: this.props.recipeSteps,
                         recipeId: recipeId
                     }).then(result=>{
                         console.log(result.data);
                     });
                 }
-                //here goes the code to upload steps, paralel to uploading image
+                this.props.hideModal();
             });
         }
     }
@@ -92,6 +103,7 @@ class RecipeEditor extends React.Component{
 function mapStateToProps(state){
     return{
         recipeSteps : state.recipe.recipeSteps,
+        recipeProducts: state.recipe.recipeProducts,
         autofocus : state.recipe.autofocus,
         resizedImage: state.picture.resizedImage
     }
@@ -99,7 +111,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
     return bindActionCreators(
-        {},
+        {hideModal},
         dispatch,
     );
 }

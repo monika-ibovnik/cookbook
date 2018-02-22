@@ -20,9 +20,7 @@ export default function(state = {
         return Object.assign({}, state, action.payload);
     }
     if(action.type == 'ADD_PRODUCT_TO_RECIPE'){
-        console.log(action.payload.id);
         let addedProductId = action.payload.id;
-        console.log(state.recipeProducts);
         let check = null;
         state.recipeProducts.map((value,index)=>{
             if(value.id == addedProductId){

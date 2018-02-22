@@ -3,7 +3,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
-import {getAllProducts} from './actions/productActions.js';
 import {showModal, hideModal} from './actions/modalActions.js';
 
 import ProductList from './ProductList';
@@ -29,7 +28,9 @@ class Products extends React.Component{
                 </div>
                 <div className="list">
                     <h2>Products</h2>
-                    <ProductList />
+                    {this.props.productList &&
+                        <ProductList />
+                    }
                 </div>
             </div>
         );
@@ -46,7 +47,6 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
     return bindActionCreators(
         {
-            getAllProducts,
             showModal,
             hideModal
         },
