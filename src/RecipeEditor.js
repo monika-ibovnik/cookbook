@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {
     initRecipe} from './actions/recipeActions';
-import RecipeProductSearchInput from './RecipeProductSearchInput';
 import RecipeStepInput from './RecipeStepInput';
 import RecipeStepList from './RecipeStepList';
 import ImgPreview from './ImgPreview';
@@ -65,18 +64,23 @@ class RecipeEditor extends React.Component{
     }
     render(){
         return(
-            <div>
-                <p>{this.state.error}</p>
+            <div className="recipe-editor">
+                <h3>Add a new recipe</h3>
+                {this.state.error &&
+                    <p className="error-message">{this.state.error}</p>
+                }
                 <form onSubmit={this.handleSubmit}>
                     <input name="recipeName" value={this.state.recipeName} onChange={this.handleChange} autoFocus/>
-                    <ImgPreview />
-                    <div className="recipe-products">
-                        <ProductSearchInput />
+                    <div className="inputs">
+                        <div className="recipe-products">
+                            <ProductSearchInput />
+                        </div>
+                        <ImgPreview />
                     </div>
                     <div className="recipe-steps">
                         <RecipeStepList list={this.props.recipeSteps}/>
                     </div>
-                    <input type="submit" value="Save the recipe"/>
+                    <input type="submit" value="Save"/><input type="button" onClick={this.props.hideModal} value="Cancel"/>
                 </form>
             </div>
         );

@@ -1,0 +1,20 @@
+div.product-search-inputs{
+    position:relative;
+}
+.read-only-input{
+    position: absolute;
+    color: black;
+    top:0;
+    left:0;
+}
+
+.input{
+    background-color: rgba(255,255,255,.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+div.input-container{
+    height: 30px;
+}

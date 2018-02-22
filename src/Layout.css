@@ -27,9 +27,6 @@ main{
     grid-template-columns: 100%;
     grid-template-rows: 0 100%;
 }
-div#modal-container{
-    position: relative;
-}
 
 footer{
     background-color: #4b6584;

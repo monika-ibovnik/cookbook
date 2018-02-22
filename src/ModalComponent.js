@@ -17,14 +17,18 @@ class ModalComponent extends React.Component{
     render(){
         if(this.props.component == 'ProductEditor'){
             return(
-                <div className="component">
-                    <ProductEditor />
+                <div className="modal-container">
+                    <div className="component">
+                        <ProductEditor />
+                    </div>
                 </div>
             );
         }else if(this.props.component == 'RecipeEditor'){
             return(
-                <div className="component">
+                <div className="modal-container">
+                    <div className="component">
                     <RecipeEditor />
+                    </div>
                 </div>
             );
         }else{

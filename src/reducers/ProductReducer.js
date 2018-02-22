@@ -29,5 +29,8 @@ export default function(state = {}, action){
             searchArray: searchArray
         }));
     }
+    if(action.type=='RESET_SEARCH_LIST'){
+        return Object.assign({}, state, action.payload);
+    }
     return state;
 }

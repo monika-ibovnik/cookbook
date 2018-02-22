@@ -19,3 +19,13 @@ export function searchForProduct(value){
         }
     });
 }
+
+export function resetSearchList(){
+    return({
+        type: 'RESET_SEARCH_LIST',
+        payload: {
+            searchArray: [],
+            exactSearchResult: ''
+        }
+    });
+}

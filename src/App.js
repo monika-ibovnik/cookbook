@@ -23,12 +23,11 @@ class App extends React.Component{
     }
     render(){
         return(
+            <div>
+                {this.props.modal &&
+                    <ModalComponent />
+                }
             <main>
-                <div id="modal-container">
-                    {this.props.modal &&
-                        <ModalComponent />
-                    }
-                </div>
                 <BrowserRouter>
                     <Layout firstname={this.props.firstname}>
                         <Route exact path='/' component={Dashboard}/>
@@ -38,6 +37,7 @@ class App extends React.Component{
                     </Layout>
                 </BrowserRouter>
             </main>
+        </div>
         );
     }
 }
