@@ -33,3 +33,10 @@ export function getAllRecipes(){
         });
     });
 }
+
+export function addProductToRecipe(value){
+    return({
+        type: 'ADD_PRODUCT_TO_RECIPE',
+        payload: value
+    });
+}

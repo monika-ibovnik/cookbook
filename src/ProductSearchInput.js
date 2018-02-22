@@ -5,8 +5,12 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {
     searchForProduct,
-    resetSearchList,
+    resetSearchList
     } from './actions/productActions';
+
+import{
+    addProductToRecipe
+} from './actions/recipeActions';
 
 import './ProductSearchInput.css';
 
@@ -16,7 +20,18 @@ class ProductSearchInput extends React.Component{
         this.state = {
             inputValue: ''
         };
-        this.handleChange = this.handleChange.bind(this)
+        this.handleChange = this.handleChange.bind(this);
+        this.addProduct = this.addProduct.bind(this);
+    }
+    addProduct(e){
+        e.preventDefault(e);
+        if(this.props.exactSearchResult != ''){
+            this.props.addProductToRecipe(this.props.exactSearchResult);
+            this.props.resetSearchList();
+            this.setState({
+                inputValue: ''
+            });
+        }
     }
     handleChange(e){
         this.setState({
@@ -40,6 +55,7 @@ class ProductSearchInput extends React.Component{
                         <input className="read-only-input" type="text" name="resultsInput" value={this.props.exactSearchResult.name} readOnly/>
                     }
                     <input  className="input" type="text" name="inputValue" value={this.state.inputValue} onChange={this.handleChange} autoComplete="off"/>
+                    <button onClick={this.addProduct}>+</button>
                 </div>
             </div>
         );
@@ -57,7 +73,8 @@ function mapDispatchToProps(dispatch){
     return bindActionCreators(
         {
             searchForProduct,
-            resetSearchList
+            resetSearchList,
+            addProductToRecipe
         },
         dispatch,
     );

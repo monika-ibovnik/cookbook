@@ -1,4 +1,7 @@
-export default function(state = {recipeSteps: []}, action){
+export default function(state = {
+    recipeSteps: [],
+    recipeProducts: []
+}, action){
     if(action.type == 'ADD_STEP'){
         return Object.assign({}, state, {recipeSteps : state.recipeSteps.concat(action.payload)});
     }
@@ -15,6 +18,11 @@ export default function(state = {recipeSteps: []}, action){
     }
     if(action.type == 'GET_ALL_RECIPES'){
         return Object.assign({}, state, action.payload);
+    }
+    if(action.type == 'ADD_PRODUCT_TO_RECIPE'){
+        return Object.assign({}, state, {
+            recipeProducts : state.recipeProducts.concat(action.payload),
+        });
     }
     return state;
 }

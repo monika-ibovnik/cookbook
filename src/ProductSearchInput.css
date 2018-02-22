@@ -18,3 +18,9 @@ div.product-search-inputs{
 div.input-container{
     height: 30px;
 }
+
+div.product-search-inputs button{
+    position: absolute;
+    top: 0;
+    left: 160px;
+}
