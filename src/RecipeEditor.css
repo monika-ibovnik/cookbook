@@ -1,0 +1,26 @@
+div.recipe-editor label{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 18px;
+    color: black;
+    display: block;
+    text-align:center;
+}
+
+h4{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+div.inputs{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    width: 450px;
+}
+
+input.title-input{
+    width: 300px;
+}

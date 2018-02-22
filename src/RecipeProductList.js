@@ -16,13 +16,15 @@ class RecipeProductListElement extends React.Component{
         super(props);
         this.removeItself = this.removeItself.bind(this);
     }
-    removeItself(){
+    removeItself(e){
+        e.preventDefault();
         this.props.onClick(this.props.index);
     }
     render(){
         return(
-            <div>
-                <p className={this.props.addedClass}>{this.props.value}</p><button onClick={this.removeItself}>-</button>
+            <div className="ingridients">
+                <div><p className={this.props.addedClass}>{this.props.value}</p></div>
+                <div><button onClick={this.removeItself}>-</button></div>
             </div>
         );
     }

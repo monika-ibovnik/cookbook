@@ -82,9 +82,10 @@ class RecipeEditor extends React.Component{
                     <p className="error-message">{this.state.error}</p>
                 }
                 <form onSubmit={this.handleSubmit}>
-                    <input name="recipeName" value={this.state.recipeName} onChange={this.handleChange} autoFocus/>
+                    <label>Title: <input className="title-input" name="recipeName" value={this.state.recipeName} onChange={this.handleChange} autoFocus/></label>
                     <div className="inputs">
                         <div className="recipe-products">
+                            <h4>Ingridients</h4>
                             <ProductSearchInput />
                             <RecipeProductList />
                         </div>

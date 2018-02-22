@@ -1,5 +1,14 @@
-div.recipe-product-list p{
+div.ingridients{
+    display:grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: 1;
+}
+div.ingridients p{
     display: inline-block;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 
 p.added{
