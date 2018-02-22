@@ -24,17 +24,19 @@ export default class RecipeStepInput extends React.Component{
     }
     render(){
         return(
-            <input type="text"
-                   name="inputValue"
-                   defaultValue={this.props.defaultValue}
-                   placeholder={this.props.placeholder}
-                   ref={(input)=>{
+            <div>
+                <textarea cols={50} rows={1}
+                    name="inputValue"
+                    defaultValue={this.props.defaultValue}
+                    placeholder={this.props.placeholder}
+                    ref={(input)=>{
                         this.inputValue = input;
-                   }}
-                   onBlur={this.handleBlur}
-                   onFocus={this.props.onFocus}
-                   onKeyDown={this.handleKeyDown}
-                   />
+                    }}
+                    onBlur={this.handleBlur}
+                    onFocus={this.props.onFocus}
+                    onKeyDown={this.handleKeyDown}>
+                    </textarea>
+            </div>
         );
     }
 }

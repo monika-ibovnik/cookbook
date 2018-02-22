@@ -2,20 +2,22 @@ import React from 'react';
 //import {..} from './actions/actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {getAllRecipes} from './actions/recipeActions';
+import {showModal} from './actions/modalActions';
 import ListElement from './ListElement';
+import './RecipeList.css';
 class RecipeList extends React.Component{
     constructor(props){
         super(props);
+        this.addRecipe = this.addRecipe.bind(this);
     }
-    componentDidMount(){
-        this.props.getAllRecipes();
+    addRecipe(){
+        this.props.showModal('RecipeEditor');
     }
     render(){
-        if(!this.props.recipeList){
+        if(!this.props.recipeList.length){
             return(
-                <div className="recipe-list">
-                    <p>Add recipes to start.</p>
+                <div className="recipe-list-button">
+                    <div><button onClick={this.addRecipe}>Add recipes to start!</button></div>
                 </div>
             );
         }else{
@@ -43,7 +45,7 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
     return bindActionCreators(
         {
-            getAllRecipes
+            showModal
         },
         dispatch,
     );

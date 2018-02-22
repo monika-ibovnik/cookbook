@@ -20,6 +20,7 @@ class App extends React.Component{
     componentDidMount(){
         this.props.getUserInfo();
         this.props.getAllProducts();
+        this.props.getAllRecipes();
     }
     render(){
         return(
@@ -54,6 +55,7 @@ function mapDispatchToProps(dispatch){
     return bindActionCreators(
             {
                 getUserInfo,
+                getAllRecipes,
                 getAllProducts,
             },
             dispatch,

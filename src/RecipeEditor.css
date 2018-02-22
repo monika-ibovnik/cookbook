@@ -14,7 +14,7 @@ h4{
     margin-bottom:10px;
 }
 
-div.inputs{
+div.recipe{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
@@ -23,4 +23,10 @@ div.inputs{
 
 input.title-input{
     width: 300px;
+}
+
+.recipe-component{
+    top: 20px;
+    overflow-y: scroll;
+    height: 400px;
 }

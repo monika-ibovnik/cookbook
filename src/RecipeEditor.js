@@ -83,7 +83,7 @@ class RecipeEditor extends React.Component{
                 }
                 <form onSubmit={this.handleSubmit}>
                     <label>Title: <input className="title-input" name="recipeName" value={this.state.recipeName} onChange={this.handleChange} autoFocus/></label>
-                    <div className="inputs">
+                    <div className="inputs recipe">
                         <div className="recipe-products">
                             <h4>Ingridients</h4>
                             <ProductSearchInput />
@@ -91,6 +91,7 @@ class RecipeEditor extends React.Component{
                         </div>
                         <ImgPreview />
                     </div>
+                    <h4>Recipe steps</h4>
                     <div className="recipe-steps">
                         <RecipeStepList list={this.props.recipeSteps}/>
                     </div>

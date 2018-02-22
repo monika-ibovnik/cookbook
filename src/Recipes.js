@@ -31,7 +31,9 @@ class Recipes extends React.Component{
                 </div>
                 <div className="list">
                     <h2>Recipes</h2>
-                    <RecipeList />
+                    {this.props.recipeList &&
+                        <RecipeList />
+                    }
                 </div>
             </div>
         );
@@ -40,7 +42,7 @@ class Recipes extends React.Component{
 
 function mapStateToProps(state){
    return{
-
+       recipeList: state.recipe.recipeList
     }
 }
 

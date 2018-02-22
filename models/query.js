@@ -49,7 +49,7 @@ exports.dbInsertRecipeStep = function(step, index, recipeid){
 };
 
 exports.dbInsertRecipeProduct = function(productid, index, recipeid){
-    return db.query(`INSERT INTO recipe_product (product, recipeid) VALUES ($1,$2,$3)`, [productid,index, recipeid]).catch(err=>{
+    return db.query(`INSERT INTO recipe_product (productid, recipeid) VALUES ($1,$2,$3)`, [productid,index, recipeid]).catch(err=>{
         console.log('insert step error',err);
     });
 };

@@ -26,7 +26,7 @@ class ModalComponent extends React.Component{
         }else if(this.props.component == 'RecipeEditor'){
             return(
                 <div className="recipe-container">
-                    <div className="component">
+                    <div className="component recipe-component">
                     <RecipeEditor />
                     </div>
                 </div>
