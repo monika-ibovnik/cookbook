@@ -40,3 +40,10 @@ export function addProductToRecipe(value){
         payload: value
     });
 }
+
+export function removeItem(index){
+    return({
+        type: 'REMOVE_ITEM',
+        payload: index
+    });
+}

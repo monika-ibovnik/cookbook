@@ -10,6 +10,7 @@ import RecipeStepInput from './RecipeStepInput';
 import RecipeStepList from './RecipeStepList';
 import ImgPreview from './ImgPreview';
 import ProductSearchInput from './ProductSearchInput';
+import RecipeProductList from './RecipeProductList';
 
 import './RecipeEditor.css';
 
@@ -74,6 +75,7 @@ class RecipeEditor extends React.Component{
                     <div className="inputs">
                         <div className="recipe-products">
                             <ProductSearchInput />
+                            <RecipeProductList />
                         </div>
                         <ImgPreview />
                     </div>

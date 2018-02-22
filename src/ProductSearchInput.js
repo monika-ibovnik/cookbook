@@ -25,7 +25,7 @@ class ProductSearchInput extends React.Component{
     }
     addProduct(e){
         e.preventDefault(e);
-        if(this.props.exactSearchResult != ''){
+        if(this.props.exactSearchResult){
             this.props.addProductToRecipe(this.props.exactSearchResult);
             this.props.resetSearchList();
             this.setState({
@@ -35,7 +35,7 @@ class ProductSearchInput extends React.Component{
     }
     handleChange(e){
         this.setState({
-            [e.target.name] : e.target.value
+            [e.target.name] : e.target.value.toLowerCase()
         }, ()=>{
             if(this.state.inputValue != ''){
                 this.props.searchForProduct(this.state.inputValue);
@@ -52,9 +52,12 @@ class ProductSearchInput extends React.Component{
                         <input className="read-only-input" type="text" name="resultsInput" value="" readOnly />
                     }
                     {this.props.exactSearchResult &&
-                        <input className="read-only-input" type="text" name="resultsInput" value={this.props.exactSearchResult.name} readOnly/>
+                        <input className="read-only-input" type="text" name="resultsInput" value={this.props.exactSearchResult.name.toLowerCase()} readOnly/>
                     }
                     <input  className="input" type="text" name="inputValue" value={this.state.inputValue} onChange={this.handleChange} autoComplete="off"/>
+                    {this.props.error &&
+                        <p>Error</p>
+                    }
                     <button onClick={this.addProduct}>+</button>
                 </div>
             </div>

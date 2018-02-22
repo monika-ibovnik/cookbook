@@ -24,5 +24,10 @@ export default function(state = {
             recipeProducts : state.recipeProducts.concat(action.payload),
         });
     }
+    if(action.type=='REMOVE_ITEM'){
+        let index = action.payload;
+        let newProductArr = [...state.recipeProducts.slice(0,index), ...state.recipeProducts.slice(index+1)];
+        return Object.assign({}, state, {recipeProducts: newProductArr});
+    }
     return state;
 }
