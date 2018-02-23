@@ -3,6 +3,9 @@ import React from 'react';
 export default class RecipeStepInput extends React.Component{
     constructor(props){
         super(props);
+        this.state = {
+            index: null
+        };
         this.handleKeyDown = this.handleKeyDown.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
     }
@@ -10,6 +13,7 @@ export default class RecipeStepInput extends React.Component{
         if(this.props.autofocus==true){
             this.inputValue.focus();
         }
+        console.log('index', this.props.index)
     }
     handleKeyDown(e){
         let arrIndex = this.props.index;
@@ -25,8 +29,8 @@ export default class RecipeStepInput extends React.Component{
     render(){
         return(
             <div>
-                <textarea cols={50} rows={1}
-                    name="inputValue"
+                <span>{this.props.index+1}</span>
+                <input name="inputValue"
                     defaultValue={this.props.defaultValue}
                     placeholder={this.props.placeholder}
                     ref={(input)=>{
@@ -35,8 +39,7 @@ export default class RecipeStepInput extends React.Component{
                     onBlur={this.handleBlur}
                     onFocus={this.props.onFocus}
                     onKeyDown={this.handleKeyDown}
-                    autoComplete="off">
-                    </textarea>
+                    autoComplete="off"/>
             </div>
         );
     }

@@ -49,13 +49,13 @@ class RecipeStepList extends React.Component{
                 if(index == inputListArr.length-1 && value== ''){
                     return (
                         <div key={index}>
-                            <span>{index+1}</span><RecipeStepInput index={index} defaultValue={value} onKeyDown={this.handleChange} onBlur={this.handleBlur} autofocus={this.props.autofocus} onFocus={this.props.initFocus}/>/>
+                            <RecipeStepInput index={index} defaultValue={value} onKeyDown={this.handleChange} onBlur={this.handleBlur} autofocus={this.props.autofocus} onFocus={this.props.initFocus}/>
                         </div>
                     );
                 }else{
                     return (
                         <div key={index}>
-                            <span>{index+1}</span><RecipeStepInput index={index} defaultValue={value} onKeyDown={this.handleChange} onBlur={this.handleBlur}/>
+                            <RecipeStepInput index={index} defaultValue={value} onKeyDown={this.handleChange} onBlur={this.handleBlur}/>
                         </div>
                     );
                 }
@@ -63,11 +63,10 @@ class RecipeStepList extends React.Component{
         }else{
             inputListArr.push(
                 <div  key={inputListArr.length}>
-                <span>{inputListArr.length+1}</span>
                 <RecipeStepInput
+                index={inputListArr.length}
                 onKeyDown={this.handleChange}
                 onBlur={this.handleChange}
-                placeholder="Leave it empty if you're done"
                 autofocus={this.props.autofocus}
                 onFocus={this.props.initFocus}/>
                 </div>
