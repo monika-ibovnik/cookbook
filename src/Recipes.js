@@ -29,7 +29,7 @@ class Recipes extends React.Component{
                     <label><button onClick={this.showAddRecipeModal}>+</button>Add new recipe</label>
                     <Menu/>
                 </div>
-                <div className="list">
+                <div className="list recipe-list">
                     <h2>Recipes</h2>
                     {this.props.recipeList &&
                         <RecipeList />

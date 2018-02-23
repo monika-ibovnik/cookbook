@@ -1,5 +1,6 @@
 div.list{
     position: relative;
+    margin-right:50px;
 }
 div.product-list-button div{
     position: absolute;

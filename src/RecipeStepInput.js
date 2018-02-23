@@ -34,7 +34,8 @@ export default class RecipeStepInput extends React.Component{
                     }}
                     onBlur={this.handleBlur}
                     onFocus={this.props.onFocus}
-                    onKeyDown={this.handleKeyDown}>
+                    onKeyDown={this.handleKeyDown}
+                    autoComplete="off">
                     </textarea>
             </div>
         );
